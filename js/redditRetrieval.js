@@ -1,12 +1,14 @@
 var newMemeSet;
 var ownedMemes = [];
 
+//refresh set of memes
 function reloadNewMemes() {
     var s = document.createElement("script");
     s.src = "http://www.reddit.com/r/memes/new.json?limit=200&amp;jsonp=getRandomMemeCallback";
     document.body.appendChild(s);
 }
 
+//get a random meme from the 
 function getRandomMemeCallback(data) {
     if(newMemeSet == null) {
       newMemeSet = data;
@@ -15,6 +17,7 @@ function getRandomMemeCallback(data) {
       newMemeSet = data;
 }
 
+//get random meme from current meme set
 function getRandomMeme() {
     if(newMemeSet == null) return "err | meme set not initialised";
 
@@ -33,7 +36,6 @@ setInterval(reloadNewMemes, 10000);
 reloadNewMemes();
 
 function updateMemeCallback(data) {
-    console.log( data);
     var score = data[0].data.children[0].data.score;
     var permalink = data[0].data.children[0].data.permalink;
 

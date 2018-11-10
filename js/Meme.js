@@ -13,9 +13,18 @@ class Meme
         this.score = score;
     }
 
-    updateData(score)
+    updateData()
     {
-        this.score = score;
+        updateMemeData(this);
+    }
+
+    timeElapsed() {
+        return (new Date().getTime()-this.time)/1000;
+    }
+
+    getValue() {
+        // TODO time falloff
+        return score;
     }
 }
 
