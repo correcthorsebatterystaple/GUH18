@@ -1,4 +1,4 @@
-var newMemeSet = [];
+var newMemeSet;
 var ownedMemes = [];
 
 function reloadNewMemes() {
@@ -8,19 +8,24 @@ function reloadNewMemes() {
 }
 
 function getRandomMemeCallback(data) {
-    newMemeSet = data;
+    if(newMemeSet == null) {
+      newMemeSet = data;
+      document.getElementById("memeImage").src = getRandomMeme().imgURL;
+    } else
+      newMemeSet = data;
 }
 
 function getRandomMeme() {
     if(newMemeSet == null) return "err | meme set not initialised";
-    
+
     var index = Math.floor(Math.random() * newMemeSet.data.children.length);
     var permalink = newMemeSet.data.children[index].data.permalink;
     var title = newMemeSet.data.children[index].data.title;
     var score = newMemeSet.data.children[index].data.score;
     var imgUrl = newMemeSet.data.children[index].data.url;
     var time = newMemeSet.data.children[index].data.created;
-    
+
+
     return new Meme(title, permalink, imgUrl, time, score);
 }
 
@@ -31,7 +36,7 @@ function updateMemeCallback(data) {
     console.log( data);
     var score = data[0].data.children[0].data.score;
     var permalink = data[0].data.children[0].data.permalink;
-    
+
     for(var i = 0; i < ownedMemes.length; i++) {
         if(ownedMemes[i].permalink == permalink) {
             ownedMemes[i].score = score;
