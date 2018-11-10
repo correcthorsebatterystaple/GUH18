@@ -31,7 +31,6 @@ setInterval(reloadNewMemes, 10000);
 reloadNewMemes();
 
 function updateMemeCallback(data) {
-    console.log( data);
     var score = data[0].data.children[0].data.score;
     var permalink = data[0].data.children[0].data.permalink;
     
