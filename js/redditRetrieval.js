@@ -12,7 +12,9 @@ function reloadNewMemes() {
 function getRandomMemeCallback(data) {
     if(newMemeSet == null) {
       newMemeSet = data;
-      document.getElementById("memeImage").src = getRandomMeme().imgURL;
+      var currentMeme = getRandomMeme();
+      document.getElementById("memeTitle").innerHTML = currentMeme.title;
+      document.getElementById("memeImage").src = currentMeme.imgURL;
     } else
       newMemeSet = data;
 }
