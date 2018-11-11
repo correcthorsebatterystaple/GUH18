@@ -13,6 +13,7 @@ class Meme
         this.score = score;
         this.prevScore = score;
         this.id = id;
+        this.initialValue = score;
     }
 
     updateData()
@@ -32,6 +33,10 @@ class Meme
     getChange() {
         // TODO get change percentage
         return this.score;
+    }
+    
+    getPurchaseCost() {
+        return this.initialValue * PURCHASE_FEE_RATIO;
     }
 }
 

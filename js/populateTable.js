@@ -4,6 +4,7 @@ function addToTable(meme){
   var Titletd = document.createElement("td");
   var Linktd = document.createElement("td");
   var link = document.createElement('a');
+  var InitialValuetd = document.createElement("td");
   var Valuetd = document.createElement("td");
   var sellBtntd = document.createElement("td");
   var sellBtn = document.createElement("button");
@@ -26,6 +27,7 @@ function addToTable(meme){
   Titletd.innerHTML = meme.title;
   
   Valuetd.innerHTML = Math.floor(meme.getValue());
+  InitialValuetd.innerHTML =  Math.floor(meme.getPurchaseCost());
   
   if(meme.change > 0)
     Valuetd.style.color = "green";
@@ -37,6 +39,7 @@ function addToTable(meme){
   Memetr.appendChild(Notd);
   Memetr.appendChild(Titletd);
   Memetr.appendChild(Linktd);
+  Memetr.appendChild(InitialValuetd);
   Memetr.appendChild(Valuetd);
   Memetr.appendChild(sellBtntd);
   document.getElementById("OwnedMemes").appendChild(Memetr); 

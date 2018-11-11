@@ -90,5 +90,6 @@ function updateGraphics() {
     currentMeme = getRandomMeme();
     document.getElementById("memeTitle").innerHTML = currentMeme.title;
     document.getElementById("memeImage").src = currentMeme.imgURL;
-    document.getElementById("memeCost").innerHTML = Math.floor(currentMeme.score * PURCHASE_FEE_RATIO);
+    document.getElementById("memeScore").innerHTML = "Score: " + currentMeme.score;
+    document.getElementById("buyBtn").innerHTML = "&pound" + Math.floor(currentMeme.score * PURCHASE_FEE_RATIO);
 }
