@@ -1,19 +1,21 @@
 var newMemeSet;
 var ownedMemes = [];
 var currentMeme;
+var memeIDCount = 1;
 
 //refresh set of memes
 function reloadNewMemes() {
     var s = document.createElement("script");
-    s.src = "http://www.reddit.com/r/memes/new.json?limit=200&amp;jsonp=getRandomMemeCallback";
+    s.src = "http://www.reddit.com/r/memes/hot.json?limit=200&amp;jsonp=getRandomMemeCallback";
     document.body.appendChild(s);
+    document.body.removeChild(s);
 }
 
 //get a random meme from the 
 function getRandomMemeCallback(data) {
     if(newMemeSet == null) {
       newMemeSet = data;
-      currentMeme = getRandomMeme();
+      updateGraphics();
       
     } else
       newMemeSet = data;
@@ -29,12 +31,13 @@ function getRandomMeme() {
     var score = newMemeSet.data.children[index].data.score;
     var imgUrl = newMemeSet.data.children[index].data.url;
     var time = newMemeSet.data.children[index].data.created;
+    var id = memeIDCount++;
 
 
-    return new Meme(title, permalink, imgUrl, time, score);
+    return new Meme(title, permalink, imgUrl, time, score, id);
 }
 
-setInterval(reloadNewMemes, 10000);
+// setInterval(reloadNewMemes, 10000);
 reloadNewMemes();
 
 function updateMemeCallback(data) {
@@ -43,6 +46,7 @@ function updateMemeCallback(data) {
 
     for(var i = 0; i < ownedMemes.length; i++) {
         if(ownedMemes[i].permalink == permalink) {
+            ownedMemes[i].prevScore = ownedMemes[i].score;
             ownedMemes[i].score = score;
             break;
         }
@@ -53,6 +57,7 @@ function updateMemeData(meme) {
     var s = document.createElement("script");
     s.src = "http://www.reddit.com" + meme.permalink + ".json?jsonp=updateMemeCallback";
     document.body.appendChild(s);
+    document.body.removeChild(s);
 }
 
 // Note: when bought meme, add to ownedMemes array
