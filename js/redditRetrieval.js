@@ -5,8 +5,8 @@ var memeIDCount = 1;
 
 var PURCHASE_FEE_RATIO = 1.15;
 
-var subredditList = ["memes", "dankmemes", "historymemes", "reactionpics", "historymemes", "comedycemetery", "dankmemes", "indianpeoplefacebook", "wheredidthesodago", "2meirl4meirl", "wholesomememes"]
-var sortTypes = ["controversial", "rising", "new"];
+var subredditList = ["memes", "historymemes", "comedycemetery", "dankmemes", "2meirl4meirl"]
+var sortTypes = ["rising", "new"];
 
 //refresh set of memes
 function reloadNewMemes() {
