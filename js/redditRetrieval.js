@@ -28,9 +28,8 @@ function getRandomMemeCallback(data) {
       updateGraphics();
       
     } else {
-      console.log(data);
-      if(newMemeSet != null && newMemeSet.data != null && newMemeSet.data.children.length > 0)
-        newMemeSet = data;
+      if(data != null && data.data != null && data.data.children.length > 50)
+          newMemeSet = data;
     }
 }
 
@@ -61,7 +60,7 @@ function getRandomMeme() {
     return "err";
 }
 
-setInterval(reloadNewMemes, 10000);
+setInterval(reloadNewMemes, 5000);
 reloadNewMemes();
 
 function updateMemeCallback(data) {
