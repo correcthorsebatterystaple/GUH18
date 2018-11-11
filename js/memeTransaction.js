@@ -14,7 +14,7 @@ function buyMeme() {
   ownedMemes.push(currentMeme);
   balance -= memePrice;
   (document.getElementById('balanceNum')).innerHTML = balance;
-  value += memePrice;
+  updateValue();
   addToTable(currentMeme);
   updateGraphics();
 }
@@ -25,7 +25,7 @@ function sellMeme(meme) {
     ownedMemes.splice(index, 1);
   }
   balance += meme.getValue();
-  value += memePrice;
+  updateValue();
 }
 
 function updateValue() {
