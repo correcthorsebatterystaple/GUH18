@@ -27,15 +27,18 @@ function getRandomMemeCallback(data) {
       newMemeSet = data;
       updateGraphics();
       
-    } else
-      newMemeSet = data;
+    } else {
+      console.log(data);
+      if(newMemeSet != null && newMemeSet.data != null && newMemeSet.data.children.length > 0)
+        newMemeSet = data;
+    }
 }
 
 //get random meme from current meme set
 function getRandomMeme() {
     if(newMemeSet == null) return "err | meme set not initialised";
 
-    while(true) {
+    for(var i = 0; i < 200; i++) {
         var index = Math.floor(Math.random() * newMemeSet.data.children.length);
         var permalink = newMemeSet.data.children[index].data.permalink;
         var title = newMemeSet.data.children[index].data.title;
@@ -46,13 +49,16 @@ function getRandomMeme() {
         
         var m = new Meme(title, permalink, imgUrl, time, score, id);
 
-        for(var i = 0; i < ownedMemes.length; i++) {
-            if(ownedMemes[i].permalink == m.permalink) continue;
+        for(var j = 0; j < ownedMemes.length; j++) {
+            if(ownedMemes[j].permalink == m.permalink) continue;
         }
         
-        if(imgUrl.endsWith(".jpg"))
+        if(imgUrl.toLowerCase().endsWith(".jpg") || imgUrl.toLowerCase().endsWith(".png"))
             return m;
     }
+    
+    alert("Couldnt find new meme. Please wait");
+    return "err";
 }
 
 setInterval(reloadNewMemes, 10000);
