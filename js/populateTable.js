@@ -5,7 +5,6 @@ function addToTable(meme){
   var Linktd = document.createElement("td");
   var link = document.createElement('a');
   var Valuetd = document.createElement("td");
-  var Changetd = document.createElement("td");
   var sellBtntd = document.createElement("td");
   var sellBtn = document.createElement("button");
   var Memetr = document.createElement("tr");
@@ -19,20 +18,26 @@ function addToTable(meme){
 
   link.href = "https://www.reddit.com"+meme.permalink;
   link.innerHTML = "LINK";
+  link.target = "_blank";
   Linktd.appendChild(link);
 
   Notd.innerHTML = meme.id;
 
   Titletd.innerHTML = meme.title;
   
-  Valuetd.innerHTML = meme.getValue().toFixed(4);
-  Changetd.innerHTML = meme.getChange();
+  Valuetd.innerHTML = Math.floor(meme.getValue());
+  
+  if(meme.change > 0)
+    Valuetd.style.color = "green";
+  else if(meme.change < 0)
+    Valuetd.style.color = 'red';
+  else
+    Valuetd.style.color = "black";
 
   Memetr.appendChild(Notd);
   Memetr.appendChild(Titletd);
   Memetr.appendChild(Linktd);
   Memetr.appendChild(Valuetd);
-  Memetr.appendChild(Changetd);
   Memetr.appendChild(sellBtntd);
   document.getElementById("OwnedMemes").appendChild(Memetr); 
 }
@@ -45,15 +50,16 @@ function removeFromTable(meme){
 
 function updateValuesTable(){
   if (ownedMemes.length === 0) return "err | empty meme ownership";
+
   //update each row in the table
   for (let i = 0; i<ownedMemes.length; i++) {
     removeFromTable(ownedMemes[i]);
-    ownedMemes[i].updateData();
+    ownedMemes[i].updateData();    
     addToTable(ownedMemes[i]);
   }
   updateValue();
 }
 
-// setInterval(updateValuesTable, 2000);
+ setInterval(updateValuesTable, 2000);
 
 

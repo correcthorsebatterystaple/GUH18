@@ -5,7 +5,7 @@ let value = 0;
 (document.getElementById('valueNum')).innerHTML = value;
 
 function buyMeme() {
-  let memePrice = currentMeme.getValue();
+  let memePrice = Math.floor(currentMeme.getValue() * PURCHASE_FEE_RATIO);
   if (balance < memePrice) {
     alert("Not enough cash mate!")
     return;

@@ -14,9 +14,21 @@
  <div class="container-fluid">
    <div class="row">
      <div class="col">
+     
+     
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-item" id="memeTitle" href="#">Meme Title</a>
+          
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-item"><h1 id="memeTitle" href="#">Meme Title</h1></a>
+                </div>
+                <div class="nav navbar-nav navbar-right">
+                    <p class="navbar-item navbar-right"><h3 id="memeCost">Meme Cost</h3></p>
+                </div>
+            </div>
         </nav>
+     
+     
         <div class="scrollable">
           <img class="img-thumbnail" id="memeImage" src="" alt="Loading meme...">
         </div>
@@ -36,14 +48,13 @@
           </div>
         </div>
         <div class="scrollable">
-          <table class="table">
+          <table class="table fixed">
             <thead>
               <tr>
-                <td>No</td>
-                <td>Title</td>
-                <td>Link</td>
-                <td>Value</td>
-                <td>Change</td>
+                <td width="10%">No</td>
+                <td width="60%">Title</td>
+                <td width="20%">Link</td>
+                <td width="10%">Value</td>
               </tr>
             </thead>
             <tbody id="OwnedMemes">
