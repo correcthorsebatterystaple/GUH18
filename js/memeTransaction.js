@@ -7,6 +7,7 @@ function buyMeme() {
   let memePrice = currentMeme.getValue();
   balance -= memePrice;
   value += memePrice;
+  updateGraphics();
 }
 
 function sellMeme(meme) {
