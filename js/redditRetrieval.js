@@ -1,5 +1,6 @@
 var newMemeSet;
 var ownedMemes = [];
+var currentMeme;
 
 //refresh set of memes
 function reloadNewMemes() {
@@ -12,9 +13,8 @@ function reloadNewMemes() {
 function getRandomMemeCallback(data) {
     if(newMemeSet == null) {
       newMemeSet = data;
-      var currentMeme = getRandomMeme();
-      document.getElementById("memeTitle").innerHTML = currentMeme.title;
-      document.getElementById("memeImage").src = currentMeme.imgURL;
+      currentMeme = getRandomMeme();
+      
     } else
       newMemeSet = data;
 }
@@ -56,3 +56,9 @@ function updateMemeData(meme) {
 }
 
 // Note: when bought meme, add to ownedMemes array
+
+function updateGraphics() {
+    currentMeme = getRandomMeme();
+    document.getElementById("memeTitle").innerHTML = currentMeme.title;
+    document.getElementById("memeImage").src = currentMeme.imgURL;
+}
