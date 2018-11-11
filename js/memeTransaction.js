@@ -37,6 +37,8 @@ function sellMeme(meme) {
     ownedMemes.splice(index, 1);
   }
   balance += meme.getValue();
+  (document.getElementById('balanceNum')).innerHTML = balance;
+  
   updateValue();
   removeFromTable(meme);
 }
