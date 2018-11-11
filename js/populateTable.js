@@ -51,6 +51,7 @@ function updateValuesTable(){
     ownedMemes[i].updateData();
     addToTable(ownedMemes[i]);
   }
+  updateValue();
 }
 
 // setInterval(updateValuesTable, 2000);
