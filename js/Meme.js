@@ -4,13 +4,15 @@ function: updates the score
 
 class Meme
 {
-    constructor(title, permalink, imgURL, time, score)
+    constructor(title, permalink, imgURL, time, score,id)
     {
         this.title = title;
         this.permalink = permalink;
         this.imgURL = imgURL;
         this.time = time;
         this.score = score;
+        this.prevScore = score;
+        this.id = id;
     }
 
     updateData()
@@ -19,12 +21,17 @@ class Meme
     }
 
     timeElapsed() {
-        return (new Date().getTime()-this.time)/1000;
+        return Math.floor((new Date().getTime()-this.time)/1000/60);
     }
 
     getValue() {
         // TODO time falloff
-        return score;
+        return this.score;
+    }
+
+    getChange() {
+        // TODO get change percentage
+        return this.score;
     }
 }
 
