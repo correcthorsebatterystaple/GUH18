@@ -1,5 +1,5 @@
 //MEME TRANSACTIONS
-let balance = 100;
+let balance = 1000;
 (document.getElementById('balanceNum')).innerHTML = balance;
 let value = 0;
 (document.getElementById('valueNum')).innerHTML = value;
@@ -19,6 +19,18 @@ function buyMeme() {
   updateGraphics();
 }
 
+function sellMemeRow(row) {
+  let id = row.target.parentNode.parentNode.id;
+  id = parseInt(id.slice(5));
+  console.log(id);
+  for (let i = 0; i<ownedMemes.length; i++) {
+    if (ownedMemes[i].id == id) {
+      sellMeme(ownedMemes[i]);
+      break;
+    }
+  }
+}
+
 function sellMeme(meme) {
   var index = ownedMemes.indexOf(meme);
   if (index > -1) {
@@ -26,6 +38,7 @@ function sellMeme(meme) {
   }
   balance += meme.getValue();
   updateValue();
+  removeFromTable(meme);
 }
 
 function updateValue() {
@@ -33,6 +46,7 @@ function updateValue() {
   for (let i = 0; i<ownedMemes.length; i++) {
     value += ownedMemes[i].getValue();
   }
+  (document.getElementById('valueNum')).innerHTML = value;
 }
 
 function changeMeme() {
