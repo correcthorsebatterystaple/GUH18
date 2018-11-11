@@ -91,5 +91,5 @@ function updateGraphics() {
     document.getElementById("memeTitle").innerHTML = currentMeme.title;
     document.getElementById("memeImage").src = currentMeme.imgURL;
     document.getElementById("memeScore").innerHTML = "Score: " + currentMeme.score;
-    document.getElementById("buyBtn").innerHTML = "&pound" + Math.floor(currentMeme.score * PURCHASE_FEE_RATIO);
+    document.getElementById("buyBtn").innerHTML = "$" + Math.floor(currentMeme.score * PURCHASE_FEE_RATIO);
 }
