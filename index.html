@@ -21,10 +21,10 @@
 
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-item"><h2 id="memeTitle" href="#">Meme Title</h2></a>
+                    <a class="navbar-item"><h3 id="memeTitle" href="#">Meme Title</h3></a>
                 </div>
-                <div class="nav navbar-nav navbar-right">
-                    <p class="navbar-item navbar-right"><h3 id="memeScore">Meme Score</h3></p>
+                <div class="nav navbar-nav navbar-right" style="height:8vh">
+                    <p class="navbar-item navbar-right"><h4 id="memeScore">Meme Score</h4></p>
                 </div>
             </div>
         </nav>
@@ -35,8 +35,8 @@
             <img class="img-thumbnail" id="memeImage" src="" alt="Loading meme...">
           </div>
         </div>
-        <div class="container-fluid">
-          <button type="button" id='buyBtn' onclick="buyMeme();" class = "btn btn-success" style="font-size:150%; width:45%">&pound</button>
+        <div class="container-fluid" style="margin-top:10px">
+          <button type="button" id='buyBtn' onclick="buyMeme();" class = "btn btn-success" style="font-size:150%; width:45%">$</button>
           <button type="button" id='dntBuyBtn' onclick="updateGraphics();" class = "btn btn-danger" style="font-size:150%; float:right; width:45%">X</button>
         </div>
       </div>
