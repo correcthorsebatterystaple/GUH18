@@ -6,7 +6,7 @@ var memeIDCount = 1;
 //refresh set of memes
 function reloadNewMemes() {
     var s = document.createElement("script");
-    s.src = "http://www.reddit.com/r/memes/hot.json?limit=200&amp;jsonp=getRandomMemeCallback";
+    s.src = "http://www.reddit.com/r/memes/rising.json?limit=200&amp;jsonp=getRandomMemeCallback";
     document.body.appendChild(s);
     document.body.removeChild(s);
 }
