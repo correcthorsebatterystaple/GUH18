@@ -1,4 +1,4 @@
 div.scrollable {
-  height: 400px !important;
+  height: 80vh !important;
   overflow-y: scroll !important;
 }
