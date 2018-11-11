@@ -1,5 +1,5 @@
 //MEME TRANSACTIONS
-let balance = 1000;
+let balance = 100;
 (document.getElementById('balanceNum')).innerHTML = balance;
 let value = 0;
 (document.getElementById('valueNum')).innerHTML = value;
