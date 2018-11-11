@@ -6,14 +6,25 @@ function addToTable(meme){
   var link = document.createElement('a');
   var Valuetd = document.createElement("td");
   var Changetd = document.createElement("td");
+  var sellBtntd = document.createElement("td");
+  var sellBtn = document.createElement("button");
   var Memetr = document.createElement("tr");
 
+  sellBtn.type = "button";
+  sellBtn.addEventListener("click", sellMemeRow);
+  sellBtn.innerHTML = "Sell";
+  sellBtntd.appendChild(sellBtn);
+
   Memetr.id = "meme-"+meme.id;
+
   link.href = "https://www.reddit.com"+meme.permalink;
   link.innerHTML = "LINK";
-  Notd.innerHTML = meme.id;
-  Titletd.innerHTML = meme.title;
   Linktd.appendChild(link);
+
+  Notd.innerHTML = meme.id;
+
+  Titletd.innerHTML = meme.title;
+  
   Valuetd.innerHTML = meme.getValue().toFixed(4);
   Changetd.innerHTML = meme.getChange();
 
@@ -22,6 +33,7 @@ function addToTable(meme){
   Memetr.appendChild(Linktd);
   Memetr.appendChild(Valuetd);
   Memetr.appendChild(Changetd);
+  Memetr.appendChild(sellBtntd);
   document.getElementById("OwnedMemes").appendChild(Memetr); 
 }
 
