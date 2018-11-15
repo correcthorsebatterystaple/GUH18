@@ -5,28 +5,28 @@ var memeIDCount = 1;
 
 var PURCHASE_FEE_RATIO = 1.15;
 
-var subredditList = ["memes", "historymemes", "comedycemetery", "dankmemes", "2meirl4meirl"]
+var subredditList = ["memes", "historymemes", "comedycemetery", "dankmemes"]
 var sortTypes = ["rising", "new"];
 
 //refresh set of memes
 function reloadNewMemes() {
     var s = document.createElement("script");
-    
+
     var sub = subredditList[Math.floor(Math.random()*subredditList.length)];
     var sort = sortTypes[Math.floor(Math.random()*sortTypes.length)];
-    
+
     s.src = "http://www.reddit.com/r/" + sub + "/" + sort + ".json?limit=200&amp;jsonp=getRandomMemeCallback";
-    
+
     document.body.appendChild(s);
     document.body.removeChild(s);
 }
 
-//get a random meme from the 
+//get a random meme from the
 function getRandomMemeCallback(data) {
     if(newMemeSet == null) {
       newMemeSet = data;
       updateGraphics();
-      
+
     } else {
       if(data != null && data.data != null && data.data.children.length > 50)
           newMemeSet = data;
@@ -45,17 +45,17 @@ function getRandomMeme() {
         var imgUrl = newMemeSet.data.children[index].data.url;
         var time = newMemeSet.data.children[index].data.created;
         var id = memeIDCount++;
-        
+
         var m = new Meme(title, permalink, imgUrl, time, score, id);
 
         for(var j = 0; j < ownedMemes.length; j++) {
             if(ownedMemes[j].permalink == m.permalink) continue;
         }
-        
+
         if(imgUrl.toLowerCase().endsWith(".jpg") || imgUrl.toLowerCase().endsWith(".png"))
             return m;
     }
-    
+
     alert("Couldnt find new meme. Please wait");
     return "err";
 }
