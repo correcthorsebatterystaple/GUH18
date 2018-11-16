@@ -1,6 +1,8 @@
 //MEME TRANSACTIONS
-let balance = 100;
-(document.getElementById('balanceNum')).innerHTML = balance;
+const INIT_BALANCE = 100;
+let balance = INIT_BALANCE;
+updateBalance(INIT_BALANCE);
+
 let value = 0;
 (document.getElementById('valueNum')).innerHTML = value;
 
@@ -9,7 +11,7 @@ function buyMeme() {
   if (balance < memePrice) {
     alert("Not enough cash mate!")
     return;
-  } 
+  }
 
   ownedMemes.push(currentMeme);
   balance -= memePrice;
@@ -36,9 +38,8 @@ function sellMeme(meme) {
   if (index > -1) {
     ownedMemes.splice(index, 1);
   }
-  balance += meme.getValue();
-  (document.getElementById('balanceNum')).innerHTML = balance;
-  
+  updateBalance(balance + meme.getValue());
+
   updateValue();
   removeFromTable(meme);
 }
@@ -49,6 +50,11 @@ function updateValue() {
     value += ownedMemes[i].getValue();
   }
   (document.getElementById('valueNum')).innerHTML = value;
+}
+
+function updateBalance(num) {
+  balance = num;
+  (document.getElementById('balanceNum')).innerHTML = balance;
 }
 
 function changeMeme() {
