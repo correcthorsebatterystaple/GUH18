@@ -1,11 +1,15 @@
-//MEME TRANSACTIONS
+/* FUNCTIONS THAT HANDLE THE TRANSACTIONS FOR THE BUYING AND SELLING OF MEMES */
+
+// initialize portfolio balance
 const INIT_BALANCE = 100;
 let balance = INIT_BALANCE;
 updateBalance(INIT_BALANCE);
 
+//initialize portfolio value
 let value = 0;
 (document.getElementById('valueNum')).innerHTML = value;
 
+// buy the current meme
 function buyMeme() {
   let memePrice = Math.floor(currentMeme.getValue() * PURCHASE_FEE_RATIO);
   if (balance < memePrice) {
@@ -21,6 +25,7 @@ function buyMeme() {
   updateGraphics();
 }
 
+//  onclick event for the sell button
 function sellMemeRow(row) {
   let id = row.target.parentNode.parentNode.id;
   id = parseInt(id.slice(5));
@@ -33,6 +38,7 @@ function sellMemeRow(row) {
   }
 }
 
+// sell the meme given the parameter
 function sellMeme(meme) {
   var index = ownedMemes.indexOf(meme);
   if (index > -1) {
@@ -44,6 +50,7 @@ function sellMeme(meme) {
   removeFromTable(meme);
 }
 
+// update the portfolio value
 function updateValue() {
   value = 0;
   for (let i = 0; i<ownedMemes.length; i++) {
@@ -52,6 +59,7 @@ function updateValue() {
   (document.getElementById('valueNum')).innerHTML = value;
 }
 
+// update the portfolio balance
 function updateBalance(num) {
   balance = num;
   (document.getElementById('balanceNum')).innerHTML = balance;
