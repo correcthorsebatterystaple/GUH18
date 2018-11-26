@@ -1,14 +1,16 @@
+/* FUNCTIONS THAT UPDATE AND POPULATE THE PORTFOLIO TABLE */
 
+// add the given meme to the portfolio table
 function addToTable(meme){
-  var Memetr = document.createElement("tr");
-  var Notd = Memetr.insertCell();
-  var Titletd = Memetr.insertCell();
-  var Linktd = Memetr.insertCell();
-  var link = document.createElement('a');
-  var InitialValuetd = Memetr.insertCell();
-  var Valuetd = Memetr.insertCell();
-  var sellBtntd = Memetr.insertCell();
-  var sellBtn = document.createElement("button");
+  let Memetr = document.createElement("tr");
+  let Notd = Memetr.insertCell();
+  let Titletd = Memetr.insertCell();
+  let Linktd = Memetr.insertCell();
+  let link = document.createElement('a');
+  let InitialValuetd = Memetr.insertCell();
+  let Valuetd = Memetr.insertCell();
+  let sellBtntd = Memetr.insertCell();
+  let sellBtn = document.createElement("button");
 
   sellBtn.type = "button";
   sellBtn.addEventListener("click", sellMemeRow);
@@ -32,17 +34,20 @@ function addToTable(meme){
   document.getElementById("OwnedMemes").appendChild(Memetr);
 }
 
+//remove given meme from the portfolio table
 function removeFromTable(meme){
   let query = "meme-"+meme.id;
   let row = document.getElementById(query);
   row.parentElement.removeChild(row);
 }
 
+// get the row of the meme parameter in the portfolio table
 function getMemeRow(meme) {
   let query = "meme-"+meme.id;
   return document.getElementById(query);
 }
 
+// refresh and update the values of the owned memes by the player
 function updateValuesTable(){
   if (ownedMemes.length === 0) return "err | empty meme ownership";
 
@@ -69,10 +74,11 @@ function updateValuesTable(){
   updateValue();
 }
 
+// create the table of values for the current owned memes
 function createValuesTable() {
   ownedMemes.forEach(meme => {
     addToTable(meme);
   });
 }
 
- setInterval(updateValuesTable, 2000);
+setInterval(updateValuesTable, 2000);
