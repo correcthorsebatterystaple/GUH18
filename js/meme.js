@@ -30,14 +30,7 @@ class Meme
         return this.score;
     }
 
-    getChange() {
-        // TODO get change percentage
-        return this.score;
-    }
-    
     getPurchaseCost() {
         return this.initialValue * PURCHASE_FEE_RATIO;
     }
 }
-
-
