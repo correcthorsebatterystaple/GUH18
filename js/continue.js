@@ -14,7 +14,7 @@ function readMemePortfolio(portfolio) {
 }
 
 // saves the current portfolio of memes
-function saveMemePortfolio() {
+function saveMemePortfolio(auto) {
   let portfolio = {};
   portfolio.balance = balance;
   portfolio.memeIDCount = memeIDCount;
@@ -23,7 +23,7 @@ function saveMemePortfolio() {
   let strPortfolio = JSON.stringify(portfolio);
   if (typeof(Storage) !== "undefined") {
     localStorage.setItem("portfolio", strPortfolio);
-    alert('Portfolio saved');
+    if (!auto) alert('Portfolio saved');
   } else alert("Unable to find local storage.\nPortfolio not saveed!");
   return strPortfolio;
 }
@@ -42,6 +42,6 @@ function restartGame() {
   location.reload();
 }
 
-setInterval(saveMemePortfolio, 30000);
+setInterval(function(){saveMemePortfolio(true);}, 30000);
 
 document.getElementById('SavePortfolio').onclick = "saveMemePortfolio();";
