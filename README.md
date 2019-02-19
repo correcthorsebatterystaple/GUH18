@@ -8,3 +8,6 @@ The page accesses a random meme from a variety of random subreddits and displays
 
 ## Inspiration
 We were inspired by the real stock market. We wanted to apply the idea of the stock market on a familiar, but different, topic. The unpredictability and constant live updates of the stock market was something that we wanted to replicate in our project.
+
+## How to play?
+Download the Repository. Run index.html with your favourite browser
