@@ -17,7 +17,7 @@ function reloadNewMemes() {
     let sub = subredditList[Math.floor(Math.random()*subredditList.length)];
     let sort = sortTypes[Math.floor(Math.random()*sortTypes.length)];
 
-    s.src = "http://www.reddit.com/r/" + sub + "/" + sort + ".json?limit=200&amp;jsonp=getRandomMemeCallback";
+    s.src = "https://www.reddit.com/r/" + sub + "/" + sort + ".json?limit=200&amp;jsonp=getRandomMemeCallback";
 
     document.body.appendChild(s);
     document.body.removeChild(s);
@@ -83,7 +83,7 @@ function updateMemeCallback(data) {
 // updates the meme that is given to the function
 function updateMemeData(meme) {
     let s = document.createElement("script");
-    s.src = "http://www.reddit.com" + meme.permalink + ".json?jsonp=updateMemeCallback";
+    s.src = "https://www.reddit.com" + meme.permalink + ".json?jsonp=updateMemeCallback";
     document.body.appendChild(s);
     document.body.removeChild(s);
 }
